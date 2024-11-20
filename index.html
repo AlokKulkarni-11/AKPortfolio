@@ -16,32 +16,314 @@
       window.onbeforeunload = function () {
           window.scrollTo(0, 0);
       };
-  </script>
+    </script>
   
     <style>
+        /* Base Styling */
         body {
-            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
             overflow-x: hidden;
             background: linear-gradient(135deg, #0e142e, #3150d8);
             color: #f0f0f0;
         }
+
+        body {
+            overflow: auto;
+            scrollbar-width: none;
+        }
+
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Header Styling */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background: #111;
+            padding: 20px;
+            z-index: 10;
+        }
+
+        header nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            font-size: 2em;
+            font-weight: 700;
+            color: #f39c12;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links li {
+            display: inline;
+        }
+
+        .nav-links a {
+            color: #f0f0f0;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+
+        .nav-links a:hover {
+            color: #029aff;
+        }
+
+        /* Hero Section Styling */
+        .hero {
+            height: 100vh;
+            background: url('hero-bg.jpg') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            padding-top: 120px; /* Adjust for header */
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.5em;
+        }
+
+        .hero button {
+            padding: 10px 20px;
+            background: #029aff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            margin: 10px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .hero button:hover {
+            background: #f39c12;
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 20px;
+            color: #FAF3E0;
+            text-align: center;
+        }
+
+        .about-heading {
+            font-size: 3.5em;
+            color: #f39c12;
+            margin-bottom: 40px;
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .about-image-container {
+            border-radius: 50%;
+            overflow: hidden;
+            border: 8px solid #f39c12;
+            width: 250px;
+            height: 250px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .about-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-text {
+            max-width: 600px;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .skill-item {
+            background: linear-gradient(135deg, #f39c12, #ffbe33);
+            color: #081241;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 1.1em;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 60px 20px;
+            background: #111;
+            color: #fff;
+        }
+
+        .projects h1 {
+            text-align: center;
+            font-size: 3em;
+            margin-bottom: 40px;
+        }
+
+        .projects-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .card {
+            background: #fff;
+            color: #111;
+            width: 300px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .card a {
+            text-decoration: none;
+            color: #029aff;
+        }
+
+        /* Experience Section */
+        .experience {
+            padding: 60px 20px;
+            background: #1e2a38;
+            color: #fafafa;
+        }
+
+        .experience h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .timeline-item {
+            background: #f39c12;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 20px;
+            color: #fafafa;
+            background: #111;
+        }
+
+        .contact h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #029aff;
+        }
+
+        #contact-form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 10px;
+            background: #2c3e50;
+        }
+
+        #contact-form input,
+        #contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #029aff;
+            border-radius: 5px;
+        }
+
+        #contact-form button {
+            background: #f39c12;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        #contact-form button:hover {
+            background: #121366;
+        }
+
+        /* Footer Styling */
+        footer {
+            padding: 20px;
+            background: #111;
+            color: #fff;
+            text-align: center;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: white;
+        }
+
+        /* Responsive Media Queries */
+        @media screen and (max-width: 768px) {
+            .about-content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card {
+                width: 100%;
+            }
+
+            .skills-container {
+                flex-direction: column;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            .hero p {
+                font-size: 1.2em;
+            }
+
+            .contact h1 {
+                font-size: 2em;
+            }
+        }
     </style>
 </head>
 <body>
-  <style>
-    /* Hide scrollbar but allow scrolling */
-body {
-    overflow: auto;
-    scrollbar-width: none; /* For Firefox */
-}
-
-body::-webkit-scrollbar {
-    display: none; /* For Chrome, Safari, and Opera */
-}
-
-  </style>
     <header>
         <nav>
             <div class="logo">
@@ -51,7 +333,6 @@ body::-webkit-scrollbar {
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
-<!--                 <li><a href="#achievements">Achievements</a></li> -->
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#contact">Get In Touch</a></li>
             </ul>
@@ -59,459 +340,71 @@ body::-webkit-scrollbar {
     </header>
     <div id="particles-js"></div>
     <main>
-      
         <!-- Hero Section -->
         <section class="hero" id="home">
             <div class="hero-content">
-                <h1>Hi, I'm <span class="highlight">Alok Kulkarni</span></h1>
-                <p> And I am dedicated to my journey as a  <span id="element"></span></p>
-                <button onclick="location.href='#contact'">Get In Touch</button>
-                <button onclick="window.open('https://drive.google.com/file/d/1ksgPvqFCQpVjXr-IexZC2ki1sZgqunaX/view?usp=sharing')">View Resume</button>
+                <h1>Hi, I'm <span>Alok</span></h1>
+                <p>Web Developer, Tech Enthusiast, and Innovator</p>
+                <button onclick="window.location.href='#contact'">Get in Touch</button>
             </div>
         </section>
-        <!-- About Me Section -->
+        <!-- About Section -->
         <section class="about" id="about">
-          <h1 class="about-heading">About Me</h1>
-          <div class="about-content">
-              <div class="about-image-container">
-                  <img src="ak2.png" alt="Alok" class="about-image">
-              </div>
-              <div class="about-text">
-                <p class="about-description">
-                  Hello! I'm <span class="highlight">Alok</span>, a student at WCE Sangli, pursuing a degree in Computer Science and Engineering (CSE).   
-                   I am in the learning phase, actively expanding my knowledge and skills in various areas of technology and software development. 
-                  My focus is on both theoretical concepts and practical application, working on projects and collaborating with peers to deepen my understanding.
-              </p>
-              <style>
-                .about-description {
-                    font-family:Verdana, Geneva, Tahoma, sans-serif; /* Apply custom font */
-                    font-size: 1.2em; /* Adjust the font size as needed */
-                    line-height: 1.6; /* Adjust line height for better readability */
-                    color: #f0f0f0; /* Change the text color */
-                }
-            
-                .highlight {
-                    font-weight: bold;
-                    color: #029aff; /* Change color of highlighted text */
-                }
-            </style>
-                  <h2 class="skills-heading">Skills & Interests</h2>
-                  <div class="skills-container">
-                      <div class="skill-item">C & C++</div>
-                      <div class="skill-item">DSA</div>
-                      <!-- <div class="skill-item"></div> -->
-                      <div class="skill-item">CSS & HTML</div>
-                      <div class="skill-item">JavaScript</div>
-                  </div>
-              </div>
-          </div>
-      </section>
-      <style>
-        /* About Section Styling */
-.about {
-    padding: 100px 20px;
-    /* background: linear-gradient(135deg, #081241 0%, #121f54 100%); */
-    color: #FAF3E0;
-    text-align: center;
-}
-
-.about-heading {
-    font-size: 3.5em;
-    color: #f39c12;
-    margin-bottom: 40px;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-    animation: fadeInDown 1.2s ease;
-}
-
-.about-content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-}
-
-.about-image-container {
-    border-radius: 50%;
-    overflow: hidden;
-    border: 8px solid #f39c12;
-    width: 250px;
-    height: 250px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    transition: transform 0.4s ease;
-}
-
-.about-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.about-image-container:hover .about-image {
-    transform: scale(1.1);
-}
-
-.about-text {
-    max-width: 600px;
-    animation: fadeInUp 1.2s ease;
-}
-
-.about-description {
-    font-size: 1.3em;
-    margin-bottom: 30px;
-    line-height: 1.6;
-}
-
-.highlight {
-    color: #029aff;
-}
-
-.skills-heading {
-    font-size: 2.2em;
-    margin-bottom: 20px;
-    color: #029aff;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
-}
-
-.skills-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-}
-
-.skill-item {
-    background: linear-gradient(135deg, #f39c12, #ffbe33);
-    color: #081241;
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-size: 1.1em;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-}
-
-.skill-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-}
-
-/* Animation for about heading and text */
-@keyframes fadeInDown {
-    0% {
-        opacity: 0;
-        transform: translateY(-30px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-      </style>      
+            <h2 class="about-heading">About Me</h2>
+            <div class="about-content">
+                <div class="about-image-container">
+                    <img class="about-image" src="path/to/your-photo.jpg" alt="Alok Kulkarni">
+                </div>
+                <div class="about-text">
+                    <p>I am a passionate web developer with a keen interest in building innovative web applications. I am proficient in various technologies, including HTML, CSS, JavaScript, and more. I believe in continuous learning and strive to create efficient and user-friendly applications.</p>
+                    <div class="skills-container">
+                        <div class="skill-item">HTML</div>
+                        <div class="skill-item">CSS</div>
+                        <div class="skill-item">JavaScript</div>
+                        <div class="skill-item">React</div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <!-- Projects Section -->
         <section class="projects" id="projects">
             <h1>Projects</h1>
             <div class="projects-container">
                 <div class="card">
-                    <h2>MoneyMint</h2>
-                    <p>MoneyMint is a finance-based platform that integrates payments and trading into one interface. 
-                      Currently focused on the frontend, the project requires significant backend development to complete its functionality. 
-                      You can access the deployed version of MoneyMint at <a href="https://alokkulkarni-11.github.io/Wealth_Wizards/home3.html" target="_blank" >MoneyMint</a> </p>
-                    <a href="https://github.com/AlokKulkarni-11/Wealth_Wizards" target="_blank">GitHub</a>
+                    <h3>Project 1</h3>
+                    <p>Description of Project 1</p>
+                    <a href="link-to-project1">View Project</a>
                 </div>
                 <div class="card">
-                    <h2>CashCalci</h2>
-                    <p>Cash Calci is a versatile calculator application designed to manage and track expenses.
-                       It offers features for calculating financial data and monitoring spending, helping users maintain better control over their finances.</p>
-                    <a href="https://github.com/rugved0014/The-Alpha-Titans-rep" target="_blank">GitHub</a>
+                    <h3>Project 2</h3>
+                    <p>Description of Project 2</p>
+                    <a href="link-to-project2">View Project</a>
                 </div>
             </div>
         </section>
-        <!-- Achievements Section -->
-        <!-- <section class="achievements" id="achievements">
-          <h1>Achievements</h1>
-          <div class="achievement-list">
-              <div class="achievement-card">
-                  <div class="card-inner">
-                      <div class="card-front">
-                          <span>1</span>
-                          <h2>Finalist in ACM Hackathon</h2>
-                      </div>
-                      <div class="card-back">
-                          <p>During the Hackathon, I took charge as team leader and contributed as both a frontend and backend developer.</p>
-                      </div>
-                  </div>
-              </div>
-              <div class="achievement-card">
-                  <div class="card-inner">
-                      <div class="card-front">
-                          <span>2</span>
-                          <h2>Finalist in Genesis</h2>
-                      </div>
-                      <div class="card-back">
-                          <p>I contributed as a project developer and embraced my role as a dedicated team player.</p>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </section>
-      
-       -->
-      <style>
-      
-      .achievements {
-    padding: 60px 0;
-    /* background-color: #f4f4f4; */
-    perspective: 1000px;
-}
-
-.achievement-list {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.achievement-card {
-    width: 200px;
-    height: 300px;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.6s;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); /* Increased box shadow for a more pronounced 3D effect */
-    border-radius: 15px; /* Rounded corners */
-    /* background: #fff; Ensure background is white for better shadow contrast */
-}
-
-.achievement-card:hover {
-    transform: rotateY(180deg);
-}
-
-.card-inner {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-}
-
-.card-front, .card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 20px;
-    box-sizing: border-box;
-    border-radius: 15px; /* Rounded corners */
-}
-
-.card-front {
-    /* background: #fff; */
-    border: 1px solid #029aff;
-}
-
-.card-back {
-    /* background: #f8f8f8; */
-    border: 1px solid #029aff;
-    transform: rotateY(180deg);
-}
-
-.card-front span {
-    font-size: 2em;
-    font-weight: bold;
-    display: block;
-}
-
-.card-front h2 {
-    font-size: 1.2em;
-    margin: 10px 0;
-}
-
-.card-back p {
-    font-size: 1em;
-    color: #ffffff;
-}
-
-
-
-      </style>      
         <!-- Experience Section -->
         <section class="experience" id="experience">
             <h1>Experience</h1>
             <div class="timeline">
                 <div class="timeline-item">
-                    <h2>Technical Executive</h2>
-                    <p>GDSC WCE | 2024 - Present </p>
-                    <p>Serving as a technical executive, I handle project development and manage a wide range of technical responsibilities for the club.</p>
-                </div>
-                <div class="timeline-item">
-                    <h2>Assistant Public Relation Officer</h2>
-                    <p>WCE ACSES | 2024 - Present</p>
-                    <p>As the Public Relations Officer, I am responsible for handling all aspects of publicity and public management within my jurisdiction.</p>
+                    <h3>Technical Executive - GDSC WCE Sangli</h3>
+                    <p>Details about your work as Technical Executive at GDSC</p>
                 </div>
             </div>
         </section>
         <!-- Contact Section -->
         <section class="contact" id="contact">
-            <h1>Get In Touch</h1>
+            <h1>Contact Me</h1>
             <form id="contact-form">
-                <label for="name">Name:</label>
-                <input type="text" id="from_name" name="from_name" required>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" required></textarea>
-                <button type="submit" id="submit">Send</button>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
             </form>
-            <style>
-              /* Contact Section Styling */
-.contact {
-    padding: 80px 20px;
-    /* background-color: #1e2a38; */
-    color: #fafafa;
-}
-
-.contact h1 {
-    text-align: center;
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    color: #029aff;
-}
-
-#contact-form {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.3);
-    /* background: #2c3e50; */
-    border-radius: 10px;
-}
-
-#contact-form label {
-    display: block;
-    font-size: 1em;
-    margin-bottom: 5px;
-    color: #f0f0f0;
-}
-
-#contact-form input, 
-#contact-form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #029aff;
-    border-radius: 5px;
-    background: #a1d9ff;
-    color: #fafafa;
-    font-size: 0.9em;
-}
-
-#contact-form textarea {
-    resize: vertical;
-    min-height: 100px;
-}
-
-#contact-form button {
-    /* background: #f39c12; */
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1em;
-    transition: background 0.3s ease;
-}
-
-#contact-form button:hover {
-     background: #121366;
-} 
-
-.social-media {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.social-media a {
-    color: #029aff;
-    text-decoration: none;
-    font-size: 1.2em;
-    margin: 0 10px;
-    transition: color 0.3s ease;
-}
-
-.social-media a:hover {
-    color: #029aff;
-}
-
-            </style>
-            <div class="social-media">
-                <a href="https://github.com/AlokKulkarni-11" target="_blank">GitHub</a>
-                <a href="https://linkedin.com/in/alok-kulkarni-499259296" target="_blank">LinkedIn</a>
-            </div>
         </section>
     </main>
-    <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-</script>
-<script type="text/javascript">
-   (function(){
-      emailjs.init({
-        publicKey: "Z21hECdKLSSCtAzUM",
-      });
-   })();
-</script>
- 
     <footer>
-        <div class="container">
-            <p>&copy; 2024 <a href="#home" style="text-decoration: none; color: white;">Alok Kulkarni</a></p>
-        </div>
+        <p>&copy; 2024 Alok Kulkarni. All rights reserved.</p>
     </footer>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
