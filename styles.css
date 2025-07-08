@@ -559,6 +559,39 @@ body {
     }
 }
 
+/* Profile Section Styles */
+.profile-section {
+  margin: 40px auto;
+  text-align: center;
+}
+.profile-section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+.profile-links {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.profile-icon {
+  width: 48px;
+  height: 48px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  background: linear-gradient(135deg, #0f36b4, #074f80);
+  padding: 6px;
+}
+.profile-links a:hover .profile-icon {
+  transform: scale(1.12) rotate(-6deg);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+}
+#find-me-online{
+  color: #029aff;
+}
+
+
 
 
 
